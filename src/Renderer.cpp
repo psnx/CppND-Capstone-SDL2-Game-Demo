@@ -3,8 +3,6 @@
 
 #include "Renderer.h"
 
-
-
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
                    const std::size_t grid_width, const std::size_t grid_height)
@@ -42,30 +40,6 @@ Renderer::~Renderer() {
 }
 
 void Renderer::draw() {
-  
-  SDL_Event window_event;
-  
-  SDL_Rect rectangle;
-  rectangle.x = static_cast<int>(100);
-  rectangle.y = static_cast<int>(100);
-  rectangle.h = 10;
-  rectangle.w = 10;
-
-  while(true) {
-  // Clear screen
-    SDL_SetRenderDrawColor(this->sdl_renderer, 100, 149, 0, 255);
-    SDL_RenderClear(sdl_renderer);
-
-    SDL_SetRenderDrawColor(sdl_renderer, 10, 12, 100, 0xFF);
-    
-    if (SDL_PollEvent( &window_event )){
-      if (SDL_QUIT == window_event.type){
-        break;
-      }
-    }
-    SDL_RenderFillRect(sdl_renderer, &rectangle);
-    SDL_RenderPresent(sdl_renderer);
-    
-    SDL_Delay(100);
-  }
+  //Never called for the time being
+  SDL_Delay(100);
 }
