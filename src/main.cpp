@@ -13,8 +13,8 @@ int main(){
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
   
-  Game game(kGridWidth, kGridHeight);
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
+  Game game(kGridWidth, kGridHeight, renderer);
   game.run(renderer, kMsPerFrame);
   return 0;
 }
