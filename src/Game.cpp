@@ -17,7 +17,7 @@ void Game::RegisterGameObject(std::unique_ptr<GameObject> &&gObject){
   this->gameObjects.emplace_back(std::move(gObject));
 }
 
-void Game::Run(Renderer &renderer, std::size_t target_frame_duration) {
+void Game::Run(std::size_t target_frame_duration) {
   SDL_Event window_event;
   std::unique_ptr<Racket> racket_ptr = std::make_unique<Racket>();
   RegisterGameObject(std::move(racket_ptr));

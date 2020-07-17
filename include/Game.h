@@ -10,7 +10,7 @@
 class Game {  
 public:
   Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer);
-  void Run(Renderer &renderer, std::size_t target_frame_duration);
+  void Run(std::size_t target_frame_duration);
   void RegisterGameObject(std::unique_ptr<GameObject> &&gObject);
   ~Game();
 
