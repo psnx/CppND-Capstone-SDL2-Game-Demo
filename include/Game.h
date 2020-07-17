@@ -10,15 +10,14 @@
 class Game {  
 public:
   Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer);
-  void run(Renderer &renderer, std::size_t target_frame_duration);
-  Racket racket;
-  void RegisterGameObject(GameObject *racket);
+  void Run(Renderer &renderer, std::size_t target_frame_duration);
+  void RegisterGameObject(std::unique_ptr<GameObject> &&gObject);
   ~Game();
 
 private:
-  void draw();
-  void update();
-  std::vector<GameObject *> gameObjects;
+  void Draw();
+  void Update();
+  std::vector<std::unique_ptr<GameObject>> gameObjects;
   Renderer &_renderer;
 };
 

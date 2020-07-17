@@ -15,6 +15,6 @@ int main(){
   
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Game game(kGridWidth, kGridHeight, renderer);
-  game.run(renderer, kMsPerFrame);
+  game.Run(renderer, kMsPerFrame);
   return 0;
 }

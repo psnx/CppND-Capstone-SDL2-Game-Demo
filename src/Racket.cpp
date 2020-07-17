@@ -14,6 +14,8 @@ void Racket::Update(){
   int i = 2;
 }
 
+
+
 void Racket::Draw(Renderer &renderer) {
   SDL_Rect rectangle;
   rectangle.x = static_cast<int>(100);
