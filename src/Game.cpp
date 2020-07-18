@@ -47,6 +47,7 @@ void Game::Run(std::size_t target_frame_duration) {
         }
        }
      }
+  SDL_Delay(10);
   } 
 }
 
@@ -55,7 +56,7 @@ void Game::Draw() {
     SDL_RenderClear(_renderer.sdl_renderer);
     std::for_each(begin(gameObjects), end(gameObjects), [this](std::unique_ptr<GameObject>& gObj){gObj->Draw(_renderer);});
     SDL_RenderPresent(_renderer.sdl_renderer);
-    SDL_Delay(100);
+   
 }
 
 Game::~Game()
