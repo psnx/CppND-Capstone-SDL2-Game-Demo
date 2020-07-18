@@ -15,10 +15,12 @@ public:
   ~Game();
 
 private:
-  void Draw();
+  void ReadInput();
   void Update();
+  void Draw();
   std::vector<std::unique_ptr<GameObject>> gameObjects;
   Renderer &_renderer;
+  bool running{true};
 };
 
 #endif

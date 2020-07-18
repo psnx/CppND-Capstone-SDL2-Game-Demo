@@ -6,11 +6,24 @@
 #include "Racket.h"
 #include "Game.h"
 
+Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){ }
 
-
-Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer)
-{
+void Game::ReadInput(){
+  SDL_Event e;
+  while (SDL_PollEvent(&e)) {
+    if (e.type == SDL_QUIT) {
+      running = false;
+    } else if (e.type == SDL_KEYDOWN) {
+      switch (e.key.keysym.sym) {
+        case SDLK_UP:
+          auto *racket = (Racket *)(this->gameObjects.front().get());
+          (*racket).transform.x += 100;
+          break;
+      }
+    }
+  }
 }
+
 void Game::Update() {}
 
 void Game::RegisterGameObject(std::unique_ptr<GameObject> &&gObject){
@@ -22,16 +35,21 @@ void Game::Run(std::size_t target_frame_duration) {
   std::unique_ptr<Racket> racket_ptr = std::make_unique<Racket>();
   RegisterGameObject(std::move(racket_ptr));
 
-  while(true) {
+  while(running) {
+    ReadInput();
     //std::for_each(begin(gameObjects), end(gameObjects), [](GameObject &gObj){gObj.Update();});
     this->Draw();
     if (SDL_PollEvent( &window_event )){
-      if (SDL_QUIT == window_event.type){
-        break;
-      }
-    }
+       if (SDL_QUIT == window_event.type){
+         break;
+        if (!running){
+          break;
+        }
+       }
+     }
   } 
 }
+
 void Game::Draw() {
     SDL_SetRenderDrawColor(_renderer.sdl_renderer, 100, 149, 0, 255);
     SDL_RenderClear(_renderer.sdl_renderer);

@@ -11,6 +11,7 @@ public:
   void Update() override;
   void Draw(Renderer &renderer) override;
   Transform transform;
+
 };
 
 #endif

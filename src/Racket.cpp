@@ -5,23 +5,23 @@
 
 Racket::Racket() {
   std::cout << "RACKET";
-  transform.x = 0;
-  transform.y = 0;
+  transform.x = 10;
+  transform.y = 10;
+  
 }
 Racket::~Racket() {}
 
 void Racket::Update(){
-  int i = 2;
+
 }
-
-
 
 void Racket::Draw(Renderer &renderer) {
   SDL_Rect rectangle;
-  rectangle.x = static_cast<int>(100);
-  rectangle.y = static_cast<int>(100);
+  rectangle.x = transform.x;
+  rectangle.y = transform.y;
   rectangle.h = 10;
   rectangle.w = 10;
+  
 
   SDL_SetRenderDrawColor(renderer.sdl_renderer, 10, 12, 100, 0xFF);
   SDL_RenderFillRect(renderer.sdl_renderer, &rectangle);
