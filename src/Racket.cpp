@@ -3,12 +3,14 @@
 
 #include "Racket.h"
 
-Racket::Racket() {
+Racket::Racket(int id) {
+  this->id = id;
   std::cout << "RACKET";
   transform.x = 10;
   transform.y = 10;
   
 }
+
 Racket::~Racket() {}
 
 void Racket::Update(){

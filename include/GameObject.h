@@ -11,9 +11,11 @@ struct Transform{
 class GameObject {
 public:
   GameObject() {};
+  GameObject(int id) {};
   virtual ~GameObject() {};
   virtual void Update() = 0;
   virtual void Draw(Renderer &renderer) = 0;
+  int id;
 };
 
 #endif

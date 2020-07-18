@@ -6,7 +6,7 @@
 
 class Racket : public GameObject {
 public:
-  Racket();
+  Racket(int id);
   ~Racket() override;
   void Update() override;
   void Draw(Renderer &renderer) override;
