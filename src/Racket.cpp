@@ -14,7 +14,7 @@ Racket::Racket(int id) {
 Racket::~Racket() {}
 
 void Racket::Update(){
-
+  std::cout << "Racket::Update called" << std::endl;
 }
 
 void Racket::Draw(Renderer &renderer) {

@@ -28,27 +28,30 @@ void Game::ReadInput(){
   }
 }
 
-void Game::Update() {}
+void Game::Update() {
+  std::for_each(begin(gameObjects), end(gameObjects), [this](std::unique_ptr<GameObject>& gObj){gObj->Update();});  
+}
 
 void Game::RegisterGameObject(std::unique_ptr<GameObject> &&gObject){
   this->gameObjects.emplace_back(std::move(gObject));
 }
 
 void Game::Run(std::size_t target_frame_duration) {
-  SDL_Event window_event;
+  
   std::unique_ptr<Racket> racket_ptr = std::make_unique<Racket>(Racket(1));
   RegisterGameObject(std::move(racket_ptr));
 
   while(running) {
-    ReadInput();
-    //std::for_each(begin(gameObjects), end(gameObjects), [](GameObject &gObj){gObj.Update();});
+    this->ReadInput();
+    this->Update();
     this->Draw();
+    SDL_Event window_event;
     if (SDL_PollEvent( &window_event )){
-       if (SDL_QUIT == window_event.type || !running){
-         break;
+       if (SDL_QUIT == window_event.type){
+         running = false;
        }
      }
-  SDL_Delay(10);
+    SDL_Delay(10);
   } 
 }
 
