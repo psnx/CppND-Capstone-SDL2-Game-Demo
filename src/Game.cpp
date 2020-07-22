@@ -4,30 +4,9 @@
 #include "GameObject.h"
 #include "Racket.h"
 #include "Game.h"
+#include "Controller.h"
 
-Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){ 
-  
-}
-
-void Game::ReadInput(){
-  SDL_Event e;
-  while (SDL_PollEvent(&e)) {
-    if (e.type == SDL_QUIT) {
-      running = false;
-    } else if (e.type == SDL_KEYDOWN) {
-      switch (e.key.keysym.sym) {
-        case SDLK_RIGHT:
-          racket->transform.x += 10;
-          break;
-        case SDLK_LEFT:
-          racket->transform.x -= 10;   
-          break;       
-        }  
-      }
-    }
-  }
-
-
+Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){}
 void Game::Update() {
   std::for_each(begin(gameObjects), end(gameObjects), [this](std::shared_ptr<GameObject> &gObj){gObj->Update();});  
 }
@@ -37,22 +16,23 @@ void Game::RegisterGameObject(std::shared_ptr<GameObject> gObject){
 } 
 
 void Game::Run(std::size_t target_frame_duration) {
-
   racket = std::make_shared<Racket>(Racket(1));
   RegisterGameObject(racket);
+  Controller controller;
+  controller.SetContext(&running, std::static_pointer_cast<GameObject> (racket));
 
   while(running) {
-    this->ReadInput();
+    controller.ReadInput();
     this->Update();
     this->Draw();
     SDL_Event window_event;
-    if (SDL_PollEvent( &window_event )){
-       if (SDL_QUIT == window_event.type){
-         running = false;
-       }
-     }
+     if (SDL_PollEvent( &window_event )){
+        if (SDL_QUIT == window_event.type){
+          running = false;
+        }
+      }
     SDL_Delay(10);
-  } 
+  }
 }
 
 void Game::Draw() {

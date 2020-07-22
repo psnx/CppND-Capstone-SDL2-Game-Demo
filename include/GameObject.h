@@ -16,6 +16,7 @@ public:
   virtual void Update() = 0;
   virtual void Draw(Renderer &renderer) = 0;
   int id;
+  Transform transform;
 };
 
 #endif
