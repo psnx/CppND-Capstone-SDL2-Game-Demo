@@ -11,16 +11,17 @@ class Game {
 public:
   Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer);
   void Run(std::size_t target_frame_duration);
-  void RegisterGameObject(std::unique_ptr<GameObject> &&gObject);
+  void RegisterGameObject(std::shared_ptr<GameObject> gObject);
   ~Game();
 
 private:
   void ReadInput();
   void Update();
   void Draw();
-  std::vector<std::unique_ptr<GameObject>> gameObjects;
+  std::vector<std::shared_ptr<GameObject>> gameObjects;
   Renderer &_renderer;
   bool running{true};
+  std::shared_ptr<Racket> racket;
 };
 
 #endif
