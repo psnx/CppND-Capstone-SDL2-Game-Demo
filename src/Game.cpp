@@ -2,11 +2,7 @@
 #include <thread>
 #include <future>
 #include <algorithm>
-#include "GameObject.h"
-#include "Racket.h"
 #include "Game.h"
-#include "Controller.h"
-#include "Ball.h"
 
 Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){
   racket = std::make_shared<Racket>(Racket(1));
@@ -15,6 +11,8 @@ Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _rendere
 
   ball = std::make_shared<Ball>(Ball(2));
   RegisterGameObject(ball);
+  tiles = std::make_shared<Tiles>(Tiles(3));
+  RegisterGameObject(tiles);
 }
 
 void Game::Update() {
