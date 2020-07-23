@@ -8,9 +8,8 @@ Ball::Ball(int id){
 }
 
 void Ball::Update(){
-    transform.x += 1;
-    transform.y += 1;
-
+  transform.x += 1;
+  transform.y += 1;
 }
 
 void Ball::DrawCircle(int center_x, int center_y, int r){
