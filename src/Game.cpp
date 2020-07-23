@@ -6,11 +6,15 @@
 #include "Racket.h"
 #include "Game.h"
 #include "Controller.h"
+#include "Ball.h"
 
 Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){
   racket = std::make_shared<Racket>(Racket(1));
   RegisterGameObject(racket);
   controller.SetContext(&running, std::static_pointer_cast<GameObject> (racket));
+
+  ball = std::make_shared<Ball>(Ball(2));
+  RegisterGameObject(ball);
 }
 
 void Game::Update() {

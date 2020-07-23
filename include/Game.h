@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "Racket.h"
 #include "Controller.h"
+#include "Ball.h"
 
 class Game {  
 public:
@@ -24,6 +25,7 @@ private:
   bool running{true};
   std::shared_ptr<Racket> racket;
   Controller controller;
+  std::shared_ptr<Ball> ball;
 };
 
 #endif

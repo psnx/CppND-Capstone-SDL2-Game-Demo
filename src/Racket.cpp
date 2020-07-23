@@ -18,12 +18,9 @@ Racket::~Racket() {}
 void Racket::Update(){
   _rect.x = transform.x;
   _rect.y = transform.y;
-
 }
 
 void Racket::Draw(Renderer &renderer) {
-  
   SDL_SetRenderDrawColor(renderer.sdl_renderer, 10, 12, 100, 0xFF);
   SDL_RenderFillRect(renderer.sdl_renderer, &_rect);
-  
 }
