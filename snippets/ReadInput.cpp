@@ -1,3 +1,4 @@
+/*
 void Game::ReadInput(){
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
@@ -18,3 +19,4 @@ void Game::ReadInput(){
     }
   }
 }
+*/

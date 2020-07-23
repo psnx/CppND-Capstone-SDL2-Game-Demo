@@ -1,5 +1,9 @@
 #include <SDL.h>
 #include <iostream>
+#include <mutex>
+#include <thread>
+#include <chrono>
+
 #include "Controller.h"
 
 Controller::Controller() : _running{nullptr}, _gameObject(nullptr) {}
@@ -15,21 +19,20 @@ Controller::~Controller(){
 }
 
 void Controller::ReadInput(){
-SDL_Event e;
+  SDL_Event e;
   while (SDL_PollEvent(&e)) {
-    std::cout << "Controller ReadInput in while loop \n";
     if (e.type == SDL_QUIT) {
       *_running = false;
-
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_RIGHT:
-          _gameObject->transform.x += 10;
+          _gameObject->transform.x += 30;
           break;
         case SDLK_LEFT:
-          _gameObject->transform.x -= 10;   
+          _gameObject->transform.x -= 30;   
           break;       
-        }  
       }
     }
+  }
+
 }
