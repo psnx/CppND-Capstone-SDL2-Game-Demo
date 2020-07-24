@@ -13,6 +13,8 @@ class Tiles : public GameObject {
   private:
     void DrawMatrix();
     std::vector<std::vector<int>> tilesMatrix;
+    int rows{3};
+    int columns{10};
 };
 
 #endif
