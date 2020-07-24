@@ -2,7 +2,7 @@
 #include "Renderer.h"
 
 Tiles::Tiles(int id){
-  tilesMatrix = new std::vector<std::vector<int>>();
+  tilesMatrix = std::vector<std::vector<int>>(3, std::vector<int>(3));
   
 }
 
@@ -15,5 +15,5 @@ void Tiles::Draw(Renderer &renderer){
 }
 
 Tiles::~Tiles(){
-  delete tilesMatrix;
+
 }
