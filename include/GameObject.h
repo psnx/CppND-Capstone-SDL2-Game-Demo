@@ -6,6 +6,8 @@
 struct Transform{
     int x{0};
     int y{0};
+    int v_x{0};
+    int v_y{0};
 };
 
 class GameObject {

@@ -12,6 +12,8 @@ Ball::Ball(int id){
   _rect.y = transform.y;
   height = 10;
   width = 10;  
+  transform.v_x = 1;
+  transform.v_y = 1;
   
 }
 
@@ -23,13 +25,18 @@ void Ball::AddToCollisionWatchList(BoundingBox * boundingBox){
 void Ball::Update(){
 
   auto other = DetectCollision(_collisionWatchList);
-  if (other != nullptr) std::cout << "COLLSION \n";
-  transform.x += 1;
-  transform.y += 1;
+  if (other !=  nullptr){
+    this->transform.v_y = -1;
+  }
+
+  if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
+  if (this->transform.y == 2) transform.v_y *= -1;
+  transform.x += transform.v_x;
+  transform.y += transform.v_y;
   topLeftCorner.X = transform.x;
   topLeftCorner.Y = transform.y;
 }
-
+/*Not used for the time being */
 void Ball::DrawCircle(int center_x, int center_y, int r){
   int r2 = r*r;
   int x{0};

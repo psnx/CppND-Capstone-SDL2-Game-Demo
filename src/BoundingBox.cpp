@@ -4,10 +4,9 @@
 BoundingBox::BoundingBox(){}
 BoundingBox::~BoundingBox(){}
 
-BoundingBox* BoundingBox::DetectCollision(const std::vector<BoundingBox*> others_list){
+BoundingBox* BoundingBox::DetectCollision(const std::vector<BoundingBox*> &others_list){
   for (auto bb : others_list){
     if (Overlaps(bb)) {
-      std::cout << "Collison" <<std::endl;
       return bb; 
     }
   }
@@ -21,11 +20,8 @@ if the summed lenght of the corresponging sides is enough to cover the distance 
 if yes for both X and Y dimensions it returns true, othervise false.
 Follows SDL convention (topleft is origin)
 */
-bool BoundingBox::Overlaps(BoundingBox *other){
+bool BoundingBox::Overlaps(const BoundingBox *other){
   // Overlap on X
-  std::cout << "Overlaps this:" << topLeftCorner.X << "\t other: " << other->topLeftCorner.X << std::endl;
-  std::cout << "Overlaps this:" << width << "\t other: " << other->width << std::endl;
-
   int thisTopRightX = this->topLeftCorner.X + this->width;
   int otherTopRightX = other->topLeftCorner.X + other->width;
   int extremeRightX= std::max(thisTopRightX, otherTopRightX);

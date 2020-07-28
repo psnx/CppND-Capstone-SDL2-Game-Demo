@@ -10,7 +10,6 @@ Controller::Controller() : _running{nullptr}, _gameObject(nullptr) {}
 
 void Controller::SetContext(bool *running, std::shared_ptr<GameObject> gameObject) {
   _gameObject = gameObject;
-  //_gameObject->transform.x = 100;
   _running = running;
 }
 
