@@ -13,6 +13,8 @@ Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _rendere
   RegisterGameObject(ball);
   tiles = std::make_shared<Tiles>(Tiles(3));
   RegisterGameObject(tiles);
+  
+  ball->AddToCollisionWatchList(racket.get());
 }
 
 void Game::Update() {
@@ -29,7 +31,7 @@ void Game::Run(std::size_t target_frame_duration) {
     controller.ReadInput();
     this->Update();
     this->Draw();
-    SDL_Delay(1);
+    //SDL_Delay(1);
   }
 }
 

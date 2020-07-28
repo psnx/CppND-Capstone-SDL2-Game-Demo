@@ -3,8 +3,9 @@
 
 #include "GameObject.h"
 #include "Renderer.h"
+#include "BoundingBox.h"
 
-class Racket : public GameObject {
+class Racket : public GameObject, public BoundingBox {
 public:
   Racket(int id);
   ~Racket() override;

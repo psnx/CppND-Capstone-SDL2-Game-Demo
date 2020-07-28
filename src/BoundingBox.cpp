@@ -1,8 +1,15 @@
 #include "BoundingBox.h"
+#include <iostream>
 
-BoundingBox* BoundingBox::DetectCollision(std::vector<BoundingBox*> others_list){
+BoundingBox::BoundingBox(){}
+BoundingBox::~BoundingBox(){}
+
+BoundingBox* BoundingBox::DetectCollision(const std::vector<BoundingBox*> others_list){
   for (auto bb : others_list){
-    if (Overlaps(bb)) return bb; 
+    if (Overlaps(bb)) {
+      std::cout << "Collison" <<std::endl;
+      return bb; 
+    }
   }
   return nullptr;
 }
@@ -16,6 +23,9 @@ Follows SDL convention (topleft is origin)
 */
 bool BoundingBox::Overlaps(BoundingBox *other){
   // Overlap on X
+  std::cout << "Overlaps this:" << topLeftCorner.X << "\t other: " << other->topLeftCorner.X << std::endl;
+  std::cout << "Overlaps this:" << width << "\t other: " << other->width << std::endl;
+
   int thisTopRightX = this->topLeftCorner.X + this->width;
   int otherTopRightX = other->topLeftCorner.X + other->width;
   int extremeRightX= std::max(thisTopRightX, otherTopRightX);
@@ -23,9 +33,9 @@ bool BoundingBox::Overlaps(BoundingBox *other){
   bool overlapsOnX =  other->width + this->width > extremeRightX-extremeLeftX;
 
   // Overlap on Y
-  int thisDownY = this->topLeftCorner.Y + this->height;
+  int thisBottomY = this->topLeftCorner.Y + this->height;
   int otherDownY = other->topLeftCorner.Y + other->height;
-  int extremeUpY= std::min(thisDownY, otherDownY);
+  int extremeUpY= std::min(thisBottomY, otherDownY);
   int extremeDownY = std::max(this->topLeftCorner.Y, other->topLeftCorner.Y);
 
   bool overlapsOnY = other->height + this->height > extremeDownY-extremeUpY;

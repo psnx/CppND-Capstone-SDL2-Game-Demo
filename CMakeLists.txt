@@ -8,7 +8,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread")
 
 find_package(SDL2 CONFIG REQUIRED)
 
-
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 include_directories(${CMAKE_SOURCE_DIR}/include)

@@ -5,12 +5,14 @@
 
 Racket::Racket(int id) {
   this->id = id;
-  transform.x = 10;
+  transform.x = 400;
   transform.y = 600;
   _rect.h = 10;
   _rect.w = 80;
   _rect.x = transform.x;
   _rect.y = transform.y;
+  width = 80;
+  height = 10;
 }
 
 Racket::~Racket() {}
@@ -18,6 +20,8 @@ Racket::~Racket() {}
 void Racket::Update(){
   _rect.x = transform.x;
   _rect.y = transform.y;
+  topLeftCorner.X = transform.x;
+  topLeftCorner.Y = transform.y;
 }
 
 void Racket::Draw(Renderer &renderer) {

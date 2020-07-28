@@ -41,5 +41,5 @@ Renderer::~Renderer() {
 
 void Renderer::draw() {
   //Never called for the time being
-  SDL_Delay(100);
+  SDL_Delay(10);
 }

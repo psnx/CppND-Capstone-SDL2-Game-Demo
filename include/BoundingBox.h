@@ -12,13 +12,12 @@ class BoundingBox {
 public:
   BoundingBox();
   ~BoundingBox();
-  BoundingBox CheckAllForCollision(std::vector<BoundingBox*> others);
-  BoundingBox* DetectCollision(std::vector<BoundingBox*> others_list);
-private:
-  bool Overlaps(BoundingBox *other);
+  BoundingBox* DetectCollision(const std::vector<BoundingBox*> others_list);
   Point topLeftCorner;
   int height{0};
   int width{0};
+private:
+  bool Overlaps(BoundingBox *other);
 };
 
 #endif
