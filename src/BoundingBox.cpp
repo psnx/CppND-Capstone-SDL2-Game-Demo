@@ -30,11 +30,31 @@ bool BoundingBox::Overlaps(const BoundingBox *other){
 
   // Overlap on Y
   int thisBottomY = this->topLeftCorner.Y + this->height;
-  int otherDownY = other->topLeftCorner.Y + other->height;
-  int extremeUpY= std::min(thisBottomY, otherDownY);
-  int extremeDownY = std::max(this->topLeftCorner.Y, other->topLeftCorner.Y);
+  int otherBottomY = other->topLeftCorner.Y + other->height;
+  int extremeUpY= std::min(thisBottomY, otherBottomY);
+  int extremeBottomY = std::max(this->topLeftCorner.Y, other->topLeftCorner.Y);
 
-  bool overlapsOnY = other->height + this->height > extremeDownY-extremeUpY;
-  return overlapsOnY && overlapsOnX;
+  bool overlapsOnY = other->height + this->height > extremeBottomY-extremeUpY;
+
+  if (overlapsOnY && overlapsOnX){
+    int x_overlap = other->height + this->height - (extremeBottomY-extremeUpY);
+    int y_overlap = other->width + this->width - (extremeRightX-extremeLeftX);
+    SetNormalVector(x_overlap, y_overlap);
+    return true;
+  }
+  return false;
+}
+
+void BoundingBox::SetNormalVector(int &x_overlap, int &y_overlap){
+  if (x_overlap >= y_overlap) {
+    //hits the X side
+    this->collisionNormal.Y = -1;
+    this->collisionNormal.X = 0;
+  }
+  this->collisionNormal.Y = 0;
+  this->collisionNormal.X = -1;
 
 }
+
+
+

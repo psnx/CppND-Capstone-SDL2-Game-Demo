@@ -14,10 +14,12 @@ public:
   ~BoundingBox();
   BoundingBox* DetectCollision(const std::vector<BoundingBox*> &others_list);
   Point topLeftCorner;
+  Point collisionNormal;
   int height{0};
   int width{0};
 private:
   bool Overlaps(const BoundingBox *other);
+  void SetNormalVector(int &x_overlap, int &y_overlap);
 };
 
 #endif

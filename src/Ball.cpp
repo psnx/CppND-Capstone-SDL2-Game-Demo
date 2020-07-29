@@ -24,7 +24,17 @@ void Ball::AddToCollisionWatchList(BoundingBox * boundingBox){
 void Ball::Update(){
   auto other = DetectCollision(_collisionWatchList);
   if (other !=  nullptr){
-    this->transform.v_y = -1;
+    /* 
+    Light ray mirror reflection equation to simulate bounce back 
+    R = 2(N*L)N-L
+    where N is the surface normal and L is the speed of the ball
+    */
+    const int &nx = collisionNormal.X;
+    const int &ny = collisionNormal.Y;
+    int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
+    this->transform.v_x = dotproduct*nx-transform.v_x;
+    this->transform.v_y = dotproduct*ny-transform.v_y;
+
   }
 
   if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
