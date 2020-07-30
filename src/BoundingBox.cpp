@@ -7,6 +7,7 @@ BoundingBox::~BoundingBox(){}
 BoundingBox* BoundingBox::DetectCollision(const std::vector<BoundingBox*> &others_list){
   for (auto bb : others_list){
     if (Overlaps(bb)) {
+      std::cout << "Collision Detected \n";
       return bb; 
     }
   }
@@ -22,24 +23,26 @@ Follows SDL convention (topleft is origin)
 */
 bool BoundingBox::Overlaps(const BoundingBox *other){
   // Overlap on X
-  int thisTopRightX = this->bbox.x + this->bbox.w;
-  int otherTopRightX = other->bbox.x + other->bbox.w;
+  /*
+  int thisTopRightX = this->bbox->x + this->bbox->w;
+  int otherTopRightX = other->bbox->x + other->bbox->w;
   int extremeRightX= std::max(thisTopRightX, otherTopRightX);
-  int extremeLeftX = std::min(this->bbox.x, other->bbox.x);
-  bool overlapsOnX =  other->bbox.w + this->bbox.w > extremeRightX-extremeLeftX;
+  int extremeLeftX = std::min(this->bbox->x, other->bbox->x);
+  bool overlapsOnX =  other->bbox->w + this->bbox->w > extremeRightX-extremeLeftX;
 
   // Overlap on Y
-  int thisBottomY = this->bbox.y + this->bbox.h;
-  int otherBottomY = other->bbox.y + other->bbox.h;
+  int thisBottomY = this->bbox->y + this->bbox->h;
+  int otherBottomY = other->bbox->y + other->bbox->h;
   int extremeUpY= std::min(thisBottomY, otherBottomY);
-  int extremeBottomY = std::max(this->bbox.y, other->bbox.y);
+  int extremeBottomY = std::max(this->bbox->y, other->bbox->y);
+  */
 
-  bool overlapsOnY = other->bbox.h + this->bbox.h > extremeBottomY-extremeUpY;
-
-  if (overlapsOnY && overlapsOnX){
-    int x_overlap = other->bbox.h + this->bbox.h - (extremeBottomY-extremeUpY);
-    int y_overlap = other->bbox.w + this->bbox.w - (extremeRightX-extremeLeftX);
-    SetNormalVector(x_overlap, y_overlap);
+  SDL_bool overlaps = SDL_HasIntersection(this->bbox.get(), other->bbox.get());
+  int x{10};
+  int y{1};
+  if (overlaps == SDL_TRUE){
+    std::cout << "Overlap \n";
+    SetNormalVector(x, y);
     return true;
   }
   return false;
@@ -53,7 +56,6 @@ void BoundingBox::SetNormalVector(int &x_overlap, int &y_overlap){
   }
   this->collisionNormal.Y = 0;
   this->collisionNormal.X = -1;
-
 }
 
 

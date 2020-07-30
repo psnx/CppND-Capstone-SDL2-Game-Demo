@@ -6,14 +6,14 @@ Ball::Ball(int id){
   this->id = id;
   transform.x = 100;
   transform.y = 100;
-  _rect.h = 10;
-  _rect.w = 10;
-  _rect.x = transform.x;
-  _rect.y = transform.y;  
   transform.v_x = 1;
   transform.v_y = 1;
+  _rect = std::make_shared<SDL_Rect>();
+  _rect->h = 10;
+  _rect->w = 10;
+  _rect->x = transform.x;
+  _rect->y = transform.y;  
   bbox = _rect;
-  
 }
 
 void Ball::AddToCollisionWatchList(BoundingBox *boundingBox){
@@ -41,18 +41,18 @@ void Ball::Update(){
   if (this->transform.y == 2) transform.v_y *= -1;
   transform.x += transform.v_x;
   transform.y += transform.v_y;
-  bbox.x = transform.x;
-  bbox.y = transform.y;
+  _rect->x = transform.x;
+  _rect->y = transform.y;
+  //std::cout << "transform.x:" << transform.x << " transform.y: "<< transform.y << std::endl;
+  //std::cout << "bbox->x:" << bbox->x << " bbox->y: "<< bbox->y << std::endl;
 }
 
 void Ball::Draw(Renderer &renderer){
   _renderer = &renderer;
   SDL_SetRenderDrawColor(_renderer->sdl_renderer, 10, 12, 100, 0xFF);
-  _rect.x = transform.x;
-  _rect.y = transform.y;
-  SDL_RenderFillRect(renderer.sdl_renderer, &_rect);
+  SDL_RenderFillRect(renderer.sdl_renderer, _rect.get());
 }
 
 Ball::~Ball(){
-  _renderer = nullptr;
+  
 }

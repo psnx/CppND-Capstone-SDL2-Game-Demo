@@ -4,13 +4,16 @@
 #include <vector>
 #include <SDL.h>
 #include "GameObject.h"
+#include "BoundingBox.h"
 
-class Tiles : public GameObject {
+
+class Tiles : public GameObject, public BoundingBox{
   public:
     Tiles(int id);
     ~Tiles() override;
     void Update() override;
     void Draw(Renderer &renderer) override;
+    std::vector<BoundingBox> bboxes;
   private:
     void DrawMatrix();
     std::vector<std::vector<int>> tilesMatrix;

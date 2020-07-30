@@ -12,7 +12,7 @@ public:
   void Update() override;
   void Draw(Renderer &renderer) override;
 private:
-  SDL_Rect _rect;
+  std::shared_ptr<SDL_Rect> _rect;
 };
 
 #endif

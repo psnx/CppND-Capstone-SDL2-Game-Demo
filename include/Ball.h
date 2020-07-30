@@ -14,8 +14,8 @@ public:
   Transform transform;
   void AddToCollisionWatchList(BoundingBox* boundingBox);
 private:
-  Renderer * _renderer;
-  SDL_Rect _rect;
+  Renderer *_renderer;
+  std::shared_ptr<SDL_Rect> _rect;
   std::vector<BoundingBox *> _collisionWatchList;
 };
 

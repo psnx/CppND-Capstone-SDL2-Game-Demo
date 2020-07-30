@@ -15,7 +15,7 @@ public:
   ~BoundingBox();
   BoundingBox* DetectCollision(const std::vector<BoundingBox*> &others_list);
   Vector2d collisionNormal;
-  SDL_Rect bbox;
+  std::shared_ptr<SDL_Rect> bbox;
 private:
   bool Overlaps(const BoundingBox *other);
   void SetNormalVector(int &x_overlap, int &y_overlap);
