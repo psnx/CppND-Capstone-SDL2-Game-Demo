@@ -22,23 +22,23 @@ Follows SDL convention (topleft is origin)
 */
 bool BoundingBox::Overlaps(const BoundingBox *other){
   // Overlap on X
-  int thisTopRightX = this->topLeftCorner.X + this->width;
-  int otherTopRightX = other->topLeftCorner.X + other->width;
+  int thisTopRightX = this->bbox.x + this->bbox.w;
+  int otherTopRightX = other->bbox.x + other->bbox.w;
   int extremeRightX= std::max(thisTopRightX, otherTopRightX);
-  int extremeLeftX = std::min(this->topLeftCorner.X, other->topLeftCorner.X);
-  bool overlapsOnX =  other->width + this->width > extremeRightX-extremeLeftX;
+  int extremeLeftX = std::min(this->bbox.x, other->bbox.x);
+  bool overlapsOnX =  other->bbox.w + this->bbox.w > extremeRightX-extremeLeftX;
 
   // Overlap on Y
-  int thisBottomY = this->topLeftCorner.Y + this->height;
-  int otherBottomY = other->topLeftCorner.Y + other->height;
+  int thisBottomY = this->bbox.y + this->bbox.h;
+  int otherBottomY = other->bbox.y + other->bbox.h;
   int extremeUpY= std::min(thisBottomY, otherBottomY);
-  int extremeBottomY = std::max(this->topLeftCorner.Y, other->topLeftCorner.Y);
+  int extremeBottomY = std::max(this->bbox.y, other->bbox.y);
 
-  bool overlapsOnY = other->height + this->height > extremeBottomY-extremeUpY;
+  bool overlapsOnY = other->bbox.h + this->bbox.h > extremeBottomY-extremeUpY;
 
   if (overlapsOnY && overlapsOnX){
-    int x_overlap = other->height + this->height - (extremeBottomY-extremeUpY);
-    int y_overlap = other->width + this->width - (extremeRightX-extremeLeftX);
+    int x_overlap = other->bbox.h + this->bbox.h - (extremeBottomY-extremeUpY);
+    int y_overlap = other->bbox.w + this->bbox.w - (extremeRightX-extremeLeftX);
     SetNormalVector(x_overlap, y_overlap);
     return true;
   }

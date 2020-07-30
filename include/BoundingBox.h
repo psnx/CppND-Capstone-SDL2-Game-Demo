@@ -2,8 +2,9 @@
 #define BOUNDING_BOX_H
 
 #include <vector>
+#include <SDL.h>
 
-struct Point {
+struct Vector2d {
   int X{0};
   int Y{0};
 };
@@ -13,10 +14,8 @@ public:
   BoundingBox();
   ~BoundingBox();
   BoundingBox* DetectCollision(const std::vector<BoundingBox*> &others_list);
-  Point topLeftCorner;
-  Point collisionNormal;
-  int height{0};
-  int width{0};
+  Vector2d collisionNormal;
+  SDL_Rect bbox;
 private:
   bool Overlaps(const BoundingBox *other);
   void SetNormalVector(int &x_overlap, int &y_overlap);

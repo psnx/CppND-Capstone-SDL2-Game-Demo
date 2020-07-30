@@ -9,11 +9,10 @@ Ball::Ball(int id){
   _rect.h = 10;
   _rect.w = 10;
   _rect.x = transform.x;
-  _rect.y = transform.y;
-  height = 10;
-  width = 10;  
+  _rect.y = transform.y;  
   transform.v_x = 1;
   transform.v_y = 1;
+  bbox = _rect;
   
 }
 
@@ -42,8 +41,8 @@ void Ball::Update(){
   if (this->transform.y == 2) transform.v_y *= -1;
   transform.x += transform.v_x;
   transform.y += transform.v_y;
-  topLeftCorner.X = transform.x;
-  topLeftCorner.Y = transform.y;
+  bbox.x = transform.x;
+  bbox.y = transform.y;
 }
 
 void Ball::Draw(Renderer &renderer){

@@ -14,7 +14,6 @@ public:
   Transform transform;
   void AddToCollisionWatchList(BoundingBox* boundingBox);
 private:
-  void DrawCircle(int center_x, int center_y, int r);
   Renderer * _renderer;
   SDL_Rect _rect;
   std::vector<BoundingBox *> _collisionWatchList;

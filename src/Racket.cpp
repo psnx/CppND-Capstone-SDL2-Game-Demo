@@ -11,8 +11,8 @@ Racket::Racket(int id) {
   _rect.w = 80;
   _rect.x = transform.x;
   _rect.y = transform.y;
-  width = 80;
-  height = 10;
+  bbox.w = 80;
+  bbox.h = 10;
 }
 
 Racket::~Racket() {}
@@ -20,8 +20,8 @@ Racket::~Racket() {}
 void Racket::Update(){
   _rect.x = transform.x;
   _rect.y = transform.y;
-  topLeftCorner.X = transform.x;
-  topLeftCorner.Y = transform.y;
+  bbox.x = transform.x;
+  bbox.y = transform.y;
 }
 
 void Racket::Draw(Renderer &renderer) {
