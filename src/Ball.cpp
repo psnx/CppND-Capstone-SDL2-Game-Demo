@@ -17,7 +17,7 @@ Ball::Ball(int id){
   
 }
 
-void Ball::AddToCollisionWatchList(BoundingBox * boundingBox){
+void Ball::AddToCollisionWatchList(BoundingBox *boundingBox){
   _collisionWatchList.emplace_back(boundingBox);
 }
 
@@ -27,11 +27,12 @@ void Ball::Update(){
     /* 
     Light ray mirror reflection equation to simulate bounce back 
     R = 2(N*L)N-L
-    where N is the surface normal and L is the speed of the ball
+    where N is the surface normal and L is the speed vector of the ball
     */
+    std::cout << "collsion" << std::endl;
     const int &nx = collisionNormal.X;
     const int &ny = collisionNormal.Y;
-    int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
+    const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
     this->transform.v_x = dotproduct*nx-transform.v_x;
     this->transform.v_y = dotproduct*ny-transform.v_y;
 
