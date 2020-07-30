@@ -16,7 +16,7 @@ Ball::Ball(int id){
   bbox = _rect;
 }
 
-void Ball::AddToCollisionWatchList(BoundingBox *boundingBox){
+void Ball::AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox){
   _collisionWatchList.emplace_back(boundingBox);
 }
 

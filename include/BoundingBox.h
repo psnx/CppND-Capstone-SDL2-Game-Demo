@@ -13,7 +13,8 @@ class BoundingBox {
 public:
   BoundingBox();
   ~BoundingBox();
-  BoundingBox* DetectCollision(const std::vector<BoundingBox*> &others_list);
+
+  std::shared_ptr<BoundingBox> DetectCollision(const std::vector<std::shared_ptr<BoundingBox>> others_list);
   Vector2d collisionNormal;
   std::shared_ptr<SDL_Rect> bbox;
 private:

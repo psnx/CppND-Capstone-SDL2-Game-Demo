@@ -14,7 +14,7 @@ Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _rendere
   // tiles = std::make_shared<Tiles>(Tiles(3));
   // RegisterGameObject(tiles);
   
-  ball->AddToCollisionWatchList(racket.get());
+  ball->AddToCollisionWatchList(racket);
 }
 
 void Game::Update() {

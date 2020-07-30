@@ -3,10 +3,10 @@
 
 BoundingBox::BoundingBox(){}
 BoundingBox::~BoundingBox(){}
-
-BoundingBox* BoundingBox::DetectCollision(const std::vector<BoundingBox*> &others_list){
+std::shared_ptr<BoundingBox> BoundingBox::DetectCollision(const std::vector<std::shared_ptr<BoundingBox>> others_list){
   for (auto bb : others_list){
-    if (Overlaps(bb)) {
+    //const so getting a raw pointer should be OK...
+    if (Overlaps(bb.get())) {
       std::cout << "Collision Detected \n";
       return bb; 
     }
