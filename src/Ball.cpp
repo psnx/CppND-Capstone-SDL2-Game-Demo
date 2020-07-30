@@ -13,7 +13,7 @@ Ball::Ball(int id){
   _rect->w = 10;
   _rect->x = transform.x;
   _rect->y = transform.y;  
-  bbox = _rect;
+  bbox = _rect; 
 }
 
 void Ball::AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox){
@@ -34,7 +34,6 @@ void Ball::Update(){
     const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
     this->transform.v_x = dotproduct*nx-transform.v_x;
     this->transform.v_y = dotproduct*ny-transform.v_y;
-
   }
 
   if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
@@ -43,8 +42,6 @@ void Ball::Update(){
   transform.y += transform.v_y;
   _rect->x = transform.x;
   _rect->y = transform.y;
-  //std::cout << "transform.x:" << transform.x << " transform.y: "<< transform.y << std::endl;
-  //std::cout << "bbox->x:" << bbox->x << " bbox->y: "<< bbox->y << std::endl;
 }
 
 void Ball::Draw(Renderer &renderer){
