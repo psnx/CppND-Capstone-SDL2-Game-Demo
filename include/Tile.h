@@ -11,9 +11,10 @@ class Tile : public BoundingBox, public GameObject {
     void Update() override;
     static std::vector<std::shared_ptr<Tile>> MakeTilesList();
     void Draw(Renderer &renderer) override;
+    bool isAlive;
 
   private:
-    SDL_Rect _rect;
+    std::shared_ptr<SDL_Rect> _rect;
     
 
 };

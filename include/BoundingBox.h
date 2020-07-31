@@ -19,7 +19,7 @@ public:
   std::shared_ptr<SDL_Rect> bbox;
 private:
   bool Overlaps(const BoundingBox *other);
-  void SetNormalVector(int &x_overlap, int &y_overlap);
+  void SetNormalVector(const BoundingBox *other);
 };
 
 #endif

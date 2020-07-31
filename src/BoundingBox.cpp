@@ -38,21 +38,19 @@ bool BoundingBox::Overlaps(const BoundingBox *other){
   */
 
   SDL_bool overlaps = SDL_HasIntersection(this->bbox.get(), other->bbox.get());
-  int x{10};
-  int y{1};
   if (overlaps == SDL_TRUE){
     //std::cout << "Overlap \n";
-    SetNormalVector(x, y);
+    SetNormalVector(other);
     return true;
   }
   return false;
 }
 
-void BoundingBox::SetNormalVector(int &x_overlap, int &y_overlap){
-  if (x_overlap >= y_overlap) {
-    //hits the X side
-    this->collisionNormal.Y = -1;
-    this->collisionNormal.X = 0;
+void BoundingBox::SetNormalVector(const BoundingBox *other){
+  if (other->bbox->y <= this->bbox->y) {
+    //hit from above - this should not work yet it does. bug?
+    this->collisionNormal.Y = 0;
+    this->collisionNormal.X = 1;
   }
   this->collisionNormal.Y = 0;
   this->collisionNormal.X = -1;
