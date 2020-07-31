@@ -8,6 +8,7 @@ std::shared_ptr<BoundingBox> BoundingBox::DetectCollision(const std::vector<std:
     //function takes const so using the raw pointer should be OK...
     if (Overlaps(bb.get())) {
       //std::cout << "Collision Detected \n";
+      bb->collisionFlag = true;
       return bb; 
     }
   }

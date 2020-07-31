@@ -3,15 +3,22 @@
 #include <SDL.h>
 #include "Tile.h"
 
-
-
 Tile::Tile(int id, SDL_Rect r) : _rect(std::make_shared<SDL_Rect>(r)) {
   id = id;
   bbox = _rect;
 }
 
 Tile::~Tile(){}
-void Tile::Update(){}
+void Tile::Update(){
+  if (collisionFlag){
+    isAlive = false;
+    collisionFlag = false;
+    _rect->x=0;
+    _rect->y=0;
+    _rect->w=0;
+    _rect->h=0;    
+  }
+}
 
 std::vector<std::shared_ptr<Tile>> Tile::MakeTilesList() {
   std::vector<std::shared_ptr<Tile>> _tileList;
@@ -27,6 +34,6 @@ std::vector<std::shared_ptr<Tile>> Tile::MakeTilesList() {
 
 void Tile::Draw(Renderer &renderer){
     SDL_SetRenderDrawColor(renderer.sdl_renderer, 10, 12, 0, 0xFF);
-    SDL_RenderFillRect(renderer.sdl_renderer, _rect.get());
+    if (isAlive) SDL_RenderFillRect(renderer.sdl_renderer, _rect.get());
 } 
 
