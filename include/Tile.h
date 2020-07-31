@@ -15,8 +15,6 @@ class Tile : public BoundingBox, public GameObject {
 
   private:
     std::shared_ptr<SDL_Rect> _rect;
-    
-
 };
 
 #endif
