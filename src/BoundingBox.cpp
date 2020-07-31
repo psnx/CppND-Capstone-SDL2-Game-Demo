@@ -7,7 +7,7 @@ std::shared_ptr<BoundingBox> BoundingBox::DetectCollision(const std::vector<std:
   for (auto bb : others_list){
     //function takes const so using the raw pointer should be OK...
     if (Overlaps(bb.get())) {
-      std::cout << "Collision Detected \n";
+      //std::cout << "Collision Detected \n";
       return bb; 
     }
   }
@@ -41,7 +41,7 @@ bool BoundingBox::Overlaps(const BoundingBox *other){
   int x{10};
   int y{1};
   if (overlaps == SDL_TRUE){
-    std::cout << "Overlap \n";
+    //std::cout << "Overlap \n";
     SetNormalVector(x, y);
     return true;
   }

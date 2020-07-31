@@ -30,12 +30,34 @@ void Game::RegisterGameObject(std::shared_ptr<GameObject> gObject){
 } 
 
 void Game::Run(std::size_t target_frame_duration) {
-  int i = 0;
+  Uint32 title_timestamp = SDL_GetTicks();
+  Uint32 frame_start;
+  Uint32 frame_end;
+  Uint32 frame_duration;
+  int frame_count = 0;
+
   while(running) {
+    frame_start = SDL_GetTicks();
     controller.ReadInput();
     this->Update();
     this->Draw();
-    //SDL_Delay(1);
+
+    frame_end = SDL_GetTicks();
+
+    // Keep track of how long each loop through the input/update/render cycle
+    // takes.
+    frame_count++;
+    frame_duration = frame_end - frame_start;
+
+    // After every second, update the window title.
+    if (frame_end - title_timestamp >= 1000) {
+      //_renderer.sdl_renderer->UpdateWindowTitle(score, frame_count);
+      frame_count = 0;
+      title_timestamp = frame_end;
+    }
+    if (frame_duration < target_frame_duration) {
+      SDL_Delay(target_frame_duration - frame_duration);
+    }
   }
 }
 

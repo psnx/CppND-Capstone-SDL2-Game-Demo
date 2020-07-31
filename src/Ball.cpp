@@ -31,7 +31,7 @@ void Ball::Update(){
     R = 2(N*L)N-L
     where N is the surface normal and L is the speed vector of the ball
     */
-    std::cout << "collsion" << std::endl;
+    //std::cout << "collsion" << std::endl;
     const int &nx = collisionNormal.X;
     const int &ny = collisionNormal.Y;
     const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
