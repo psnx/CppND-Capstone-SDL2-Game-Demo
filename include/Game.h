@@ -27,7 +27,7 @@ private:
   std::shared_ptr<Racket> racket;
   Controller controller;
   std::shared_ptr<Ball> ball;
-  std::shared_ptr<Tile> tiles;
+  std::vector<std::shared_ptr<Tile>> tiles;
 };
 
 #endif

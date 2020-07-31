@@ -39,7 +39,3 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::draw() {
-  //Never called for the time being
-  SDL_Delay(10);
-}

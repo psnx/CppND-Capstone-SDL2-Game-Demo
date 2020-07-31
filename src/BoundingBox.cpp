@@ -23,24 +23,8 @@ if yes for both X and Y dimensions it returns true, othervise false.
 Follows SDL convention (topleft is origin)
 */
 bool BoundingBox::Overlaps(const BoundingBox *other){
-  // Overlap on X
-  /*
-  int thisTopRightX = this->bbox->x + this->bbox->w;
-  int otherTopRightX = other->bbox->x + other->bbox->w;
-  int extremeRightX= std::max(thisTopRightX, otherTopRightX);
-  int extremeLeftX = std::min(this->bbox->x, other->bbox->x);
-  bool overlapsOnX =  other->bbox->w + this->bbox->w > extremeRightX-extremeLeftX;
-
-  // Overlap on Y
-  int thisBottomY = this->bbox->y + this->bbox->h;
-  int otherBottomY = other->bbox->y + other->bbox->h;
-  int extremeUpY= std::min(thisBottomY, otherBottomY);
-  int extremeBottomY = std::max(this->bbox->y, other->bbox->y);
-  */
-
   SDL_bool overlaps = SDL_HasIntersection(this->bbox.get(), other->bbox.get());
   if (overlaps == SDL_TRUE){
-    //std::cout << "Overlap \n";
     SetNormalVector(other);
     return true;
   }
