@@ -19,6 +19,9 @@ Ball::Ball(int id){
 void Ball::AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox){
   _collisionWatchList.emplace_back(boundingBox);
 }
+void Ball::MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox){
+  _collisionWatchList.emplace_back(std::move(boundingBox));
+}
 
 void Ball::Update(){
   auto other = DetectCollision(_collisionWatchList);

@@ -6,12 +6,16 @@
 
 class Tile : public BoundingBox, public GameObject {
   public:
-    Tile();
+    Tile(int id, SDL_Rect r);
     ~Tile();
+    void Update() override;
+    static std::vector<std::shared_ptr<Tile>> MakeTilesList();
+    void Draw(Renderer &renderer) override;
 
   private:
+    SDL_Rect _rect;
     
 
-}
+};
 
 #endif

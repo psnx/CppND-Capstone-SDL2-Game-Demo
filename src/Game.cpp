@@ -11,10 +11,14 @@ Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _rendere
 
   ball = std::make_shared<Ball>(Ball(2));
   RegisterGameObject(ball);
-  // tiles = std::make_shared<Tiles>(Tiles(3));
-  // RegisterGameObject(tiles);
+  std::vector<std::shared_ptr<Tile>> tiles = Tile::MakeTilesList();
+  for (auto t : tiles){
+    RegisterGameObject(t);
+    ball->AddToCollisionWatchList(t);
+  }
   
   ball->AddToCollisionWatchList(racket);
+  
 }
 
 void Game::Update() {

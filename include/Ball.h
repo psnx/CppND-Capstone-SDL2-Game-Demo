@@ -13,6 +13,7 @@ public:
   void Draw(Renderer &renderer) override;
   Transform transform;
   void AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox);
+  void MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox);
 private:
   Renderer *_renderer;
   std::shared_ptr<SDL_Rect> _rect;

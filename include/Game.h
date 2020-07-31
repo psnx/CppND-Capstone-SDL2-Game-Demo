@@ -8,7 +8,7 @@
 #include "Racket.h"
 #include "Controller.h"
 #include "Ball.h"
-#include "Tiles.h"
+#include "Tile.h"
 
 class Game {  
 public:
@@ -27,7 +27,7 @@ private:
   std::shared_ptr<Racket> racket;
   Controller controller;
   std::shared_ptr<Ball> ball;
-  std::shared_ptr<Tiles> tiles;
+  std::shared_ptr<Tile> tiles;
 };
 
 #endif
