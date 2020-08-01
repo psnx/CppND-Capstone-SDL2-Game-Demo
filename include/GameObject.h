@@ -2,13 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "Renderer.h"
-
-struct Transform{
-    int x{0};
-    int y{0};
-    int v_x{0};
-    int v_y{0};
-};
+#include "Vector2d.h"
 
 class GameObject {
 public:
@@ -18,7 +12,9 @@ public:
   virtual void Update() = 0;
   virtual void Draw(Renderer &renderer) = 0;
   int id;
-  Transform transform;
+  Vector2d<int> location;
+  Vector2d<int> speed;
+
 };
 
 #endif

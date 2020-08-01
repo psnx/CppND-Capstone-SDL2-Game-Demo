@@ -25,10 +25,10 @@ void Controller::ReadInput(){
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_RIGHT:
-          _gameObject->transform.x += 30;
+          _gameObject->location.X += 30;
           break;
         case SDLK_LEFT:
-          _gameObject->transform.x -= 30;   
+          _gameObject->location.X -= 30;   
           break;       
       }
     }
