@@ -50,7 +50,7 @@ void Ball::Update(){
   
   location += speed;
   if (this->location.X == 2 or location.X == 598) speed.X *= -1;
-  if (this->location.Y == 2) location.Y *= -1;
+  if (this->location.Y == 2) speed.Y *= -1;
   _rect->x = location.X;
   _rect->y = location.Y;
 }
