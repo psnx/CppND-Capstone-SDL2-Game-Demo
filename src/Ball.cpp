@@ -6,7 +6,7 @@
 Ball::Ball(int id){
   this->id = id;
   location = Vector2d(100, 200);
-  speed = Vector2d(1,1);
+  speed = Vector2d(3,3);
   SDL_Rect r {location.X, location.Y, 10, 10};
   _rect = std::make_shared<SDL_Rect>(std::move(r));
   bbox = _rect; 
@@ -32,8 +32,8 @@ void Ball::Update(){
   }
   
   location += speed;
-  if (this->location.X == 2 or location.X == 598) speed.X *= -1;
-  if (this->location.Y == 2) speed.Y *= -1;
+  if (this->location.X <= 2 or location.X >= 598) speed.X *= -1;
+  if (this->location.Y <= 2) speed.Y *= -1;
   _rect->x = location.X;
   _rect->y = location.Y;
 }
