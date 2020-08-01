@@ -44,7 +44,7 @@ void Ball::Update(){
     R = 2(N*L)N-L
     where N is the surface normal and L is the speed vector of the ball
     */
-    CalculateBounceBackSpeedVector(collisionNormal, location); 
+    CalculateBounceBackSpeedVector(collisionNormal, speed); 
     
   }
   
