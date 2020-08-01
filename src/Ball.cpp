@@ -35,8 +35,8 @@ void Ball::Update(){
     const int &ny = collisionNormal.Y;
     const int &nx = collisionNormal.X;
     const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
-    this->transform.v_x = dotproduct*nx-transform.v_x;
-    this->transform.v_y = dotproduct*ny-transform.v_y;
+    this->transform.v_x = transform.v_x-dotproduct*nx;
+    this->transform.v_y = transform.v_y-dotproduct*ny;
   }
   
   transform.x += transform.v_x;

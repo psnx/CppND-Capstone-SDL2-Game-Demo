@@ -34,11 +34,11 @@ bool BoundingBox::Overlaps(const BoundingBox *other){
 void BoundingBox::SetNormalVector(const BoundingBox *other){
   if (other->bbox->y <= this->bbox->y) {
     //hit from above - this should not work yet it does. bug?
-    this->collisionNormal.Y = 0;
-    this->collisionNormal.X = 1;
+    this->collisionNormal.Y = -1;
+    this->collisionNormal.X = 0;
   }
-  this->collisionNormal.Y = 0;
-  this->collisionNormal.X = -1;
+  this->collisionNormal.Y = 1;
+  this->collisionNormal.X = 0;
 }
 
 
