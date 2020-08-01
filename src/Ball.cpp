@@ -31,19 +31,18 @@ void Ball::Update(){
     R = 2(N*L)N-L
     where N is the surface normal and L is the speed vector of the ball
     */
-    //std::cout << "collsion" << std::endl;
     
     const int &ny = collisionNormal.Y;
     const int &nx = collisionNormal.X;
     const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
-    this->transform.v_x = dotproduct*nx-transform.v_x;
-    this->transform.v_y = dotproduct*ny-transform.v_y;
+    this->transform.v_x = transform.v_x-dotproduct*nx;
+    this->transform.v_y = transform.v_y-dotproduct*ny;
   }
   
   transform.x += transform.v_x;
   transform.y += transform.v_y;
-    if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
-    if (this->transform.y == 2) transform.v_y *= -1;
+  if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
+  if (this->transform.y == 2) transform.v_y *= -1;
   _rect->x = transform.x;
   _rect->y = transform.y;
 }
@@ -54,6 +53,4 @@ void Ball::Draw(Renderer &renderer){
   SDL_RenderFillRect(renderer.sdl_renderer, _rect.get());
 }
 
-Ball::~Ball(){
-  
-}
+Ball::~Ball(){}
