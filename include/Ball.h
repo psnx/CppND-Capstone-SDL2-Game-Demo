@@ -12,7 +12,6 @@ public:
   ~Ball() override;
   void Update() override;
   void Draw(Renderer &renderer) override;
-  Transform transform;
   Vector2d<int> location;
   Vector2d<int> speed;
   void AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox);
@@ -21,6 +20,11 @@ private:
   Renderer *_renderer;
   std::shared_ptr<SDL_Rect> _rect;
   std::vector<std::shared_ptr<BoundingBox>> _collisionWatchList;
+    /* 
+    Light ray mirror reflection equation to simulate bounce back 
+    R = L-2(N*L)N
+    where N is the surface normal and L is the speed vector of the ball
+    */
   void CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Vector2d<int> &speed);
 };
 

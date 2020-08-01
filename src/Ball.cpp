@@ -7,45 +7,28 @@ Ball::Ball(int id){
   this->id = id;
   location = Vector2d(100, 200);
   speed = Vector2d(1,1);
-  _rect = std::make_shared<SDL_Rect>();
-  _rect->x = location.X;
-  _rect->y = location.Y;  
-  _rect->h = 10;
-  _rect->w = 10;
+  SDL_Rect r {location.X, location.Y, 10, 10};
+  _rect = std::make_shared<SDL_Rect>(std::move(r));
   bbox = _rect; 
 }
 
 void Ball::AddToCollisionWatchList(std::shared_ptr<BoundingBox> boundingBox){
   _collisionWatchList.emplace_back(boundingBox);
 }
+
 void Ball::MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox){
   _collisionWatchList.emplace_back(std::move(boundingBox));
 }
 
 void Ball::CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Vector2d<int> &speed){
     //R = L-2(N*L)N
-    //speed = speed - collisionNormal.Scale(2*(collisionNormal * speed));
-    
-    const int &ny = collisionNormal.Y;
-    const int &nx = collisionNormal.X;
-    const int dotproduct = 2*(nx*speed.X + ny*speed.Y);
-    speed.X = speed.X-dotproduct*nx;
-    speed.Y = speed.Y-dotproduct*ny;
-    
+    speed -= collisionNormal.Scale(2*(collisionNormal * speed));
 }
 
 void Ball::Update(){
-  std::cout << "Ball location x: " << speed.X << " y:" << speed.Y << std::endl;
   auto other = DetectCollision(_collisionWatchList);
   if (other !=  nullptr){
-    std::cout << "COLL \n";
-    /* 
-    Light ray mirror reflection equation to simulate bounce back 
-    R = 2(N*L)N-L
-    where N is the surface normal and L is the speed vector of the ball
-    */
     CalculateBounceBackSpeedVector(collisionNormal, speed); 
-    
   }
   
   location += speed;
