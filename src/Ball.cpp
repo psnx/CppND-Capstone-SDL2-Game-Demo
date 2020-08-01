@@ -23,6 +23,14 @@ void Ball::MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox){
   _collisionWatchList.emplace_back(std::move(boundingBox));
 }
 
+void Ball::CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Transform &transform){
+    const int &ny = collisionNormal.Y;
+    const int &nx = collisionNormal.X;
+    const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
+    transform.v_x = transform.v_x-dotproduct*nx;
+    transform.v_y = transform.v_y-dotproduct*ny;
+}
+
 void Ball::Update(){
   auto other = DetectCollision(_collisionWatchList);
   if (other !=  nullptr){
@@ -31,12 +39,7 @@ void Ball::Update(){
     R = 2(N*L)N-L
     where N is the surface normal and L is the speed vector of the ball
     */
-    
-    const int &ny = collisionNormal.Y;
-    const int &nx = collisionNormal.X;
-    const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
-    this->transform.v_x = transform.v_x-dotproduct*nx;
-    this->transform.v_y = transform.v_y-dotproduct*ny;
+    CalculateBounceBackSpeedVector(collisionNormal, transform); 
   }
   
   transform.x += transform.v_x;

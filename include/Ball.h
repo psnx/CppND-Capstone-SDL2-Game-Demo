@@ -18,6 +18,7 @@ private:
   Renderer *_renderer;
   std::shared_ptr<SDL_Rect> _rect;
   std::vector<std::shared_ptr<BoundingBox>> _collisionWatchList;
+  void CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Transform &transform);
 };
 
 #endif

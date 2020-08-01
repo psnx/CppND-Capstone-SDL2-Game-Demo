@@ -4,9 +4,13 @@
 #include <vector>
 #include <SDL.h>
 
+template<class T>
 struct Vector2d {
-  int X{0};
-  int Y{0};
+  T X{0};
+  T Y{0};
+  static T DotProduct (const Vector2d one, const Vector2d two){
+    return (one.X * two.X + one.Y * two.Y);
+  }
 };
 
 class BoundingBox {
@@ -15,7 +19,7 @@ public:
   ~BoundingBox();
 
   std::shared_ptr<BoundingBox> DetectCollision(const std::vector<std::shared_ptr<BoundingBox>> others_list);
-  Vector2d collisionNormal;
+  Vector2d<int> collisionNormal;
   std::shared_ptr<SDL_Rect> bbox;
   bool collisionFlag{false};
 private:
