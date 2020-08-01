@@ -5,21 +5,17 @@
 
 Racket::Racket(int id) {
   this->id = id;
-  transform.x = 400;
-  transform.y = 600;
-  _rect = std::make_shared<SDL_Rect>();
-  _rect->h = 10;
-  _rect->w = 80;
-  _rect->x = transform.x;
-  _rect->y = transform.y;
+  location = Vector2d(400, 600);
+  SDL_Rect r {location.X, location.Y, 80, 10};
+  _rect = std::make_shared<SDL_Rect>(std::move(r));
   bbox = _rect;
 }
 
 Racket::~Racket() {}
 
 void Racket::Update(){
-  _rect->x = transform.x;
-  _rect->y = transform.y;
+  _rect->x = location.X; //this is updated by the controller
+  _rect->y = location.Y;
 }
 
 void Racket::Draw(Renderer &renderer) {
