@@ -5,15 +5,13 @@
 
 Ball::Ball(int id){
   this->id = id;
-  transform.x = 100;
-  transform.y = 200;
-  transform.v_x = 1;
-  transform.v_y = 1;
+  location = Vector2d(100, 200);
+  speed = Vector2d(1,1);
   _rect = std::make_shared<SDL_Rect>();
+  _rect->x = location.X;
+  _rect->y = location.Y;  
   _rect->h = 10;
   _rect->w = 10;
-  _rect->x = transform.x;
-  _rect->y = transform.y;  
   bbox = _rect; 
 }
 
@@ -24,31 +22,37 @@ void Ball::MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox){
   _collisionWatchList.emplace_back(std::move(boundingBox));
 }
 
-void Ball::CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Transform &transform){
+void Ball::CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Vector2d<int> &speed){
+    //R = L-2(N*L)N
+    //speed = speed - collisionNormal.Scale(2*(collisionNormal * speed));
+    
     const int &ny = collisionNormal.Y;
     const int &nx = collisionNormal.X;
-    const int dotproduct = 2*(nx*transform.v_x + ny*transform.v_y);
-    transform.v_x = transform.v_x-dotproduct*nx;
-    transform.v_y = transform.v_y-dotproduct*ny;
+    const int dotproduct = 2*(nx*speed.X + ny*speed.Y);
+    speed.X = speed.X-dotproduct*nx;
+    speed.Y = speed.Y-dotproduct*ny;
+    
 }
 
 void Ball::Update(){
+  std::cout << "Ball location x: " << speed.X << " y:" << speed.Y << std::endl;
   auto other = DetectCollision(_collisionWatchList);
   if (other !=  nullptr){
+    std::cout << "COLL \n";
     /* 
     Light ray mirror reflection equation to simulate bounce back 
     R = 2(N*L)N-L
     where N is the surface normal and L is the speed vector of the ball
     */
-    CalculateBounceBackSpeedVector(collisionNormal, transform); 
+    CalculateBounceBackSpeedVector(collisionNormal, location); 
+    
   }
   
-  transform.x += transform.v_x;
-  transform.y += transform.v_y;
-  if (this->transform.x == 2 or transform.x == 598) transform.v_x *= -1;
-  if (this->transform.y == 2) transform.v_y *= -1;
-  _rect->x = transform.x;
-  _rect->y = transform.y;
+  location += speed;
+  if (this->location.X == 2 or location.X == 598) speed.X *= -1;
+  if (this->location.Y == 2) location.Y *= -1;
+  _rect->x = location.X;
+  _rect->y = location.Y;
 }
 
 void Ball::Draw(Renderer &renderer){
