@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "Game.h"
 
-Game::Game(size_t kGridWidth, size_t kGridHeight, Renderer &renderer) : _renderer(renderer){
+Game::Game(Renderer &renderer) : _renderer(renderer){
   racket = std::make_shared<Racket>(Racket(1));
   RegisterGameObject(racket);
   controller.SetContext(&running, std::static_pointer_cast<GameObject> (racket));

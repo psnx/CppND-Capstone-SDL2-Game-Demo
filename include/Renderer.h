@@ -6,8 +6,7 @@
 
 class Renderer {
 public:
-  Renderer(const std::size_t screen_width, const std::size_t screen_height,
-                const std::size_t grid_width, const std::size_t grid_height);
+  Renderer(const std::size_t screen_width, const std::size_t screen_height);
   ~Renderer();
   
   SDL_Window *sdl_window;
@@ -16,8 +15,6 @@ public:
 private:
   int screen_width;
   int screen_height;
-  int grid_width;
-  int grid_height;
 };
 
 #endif
