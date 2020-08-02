@@ -59,10 +59,11 @@ The codebase is inspired by [Udacity's CppND Snake Game](https://github.com/udac
 **NOTE: ** The header files and `cpp` files are stored separately in the `./include` and `./src` folder
 respectively.
 
-Adressed rubric points
+Adressed rubric points  
+
 
 | Requirement                     | Self Assesment                     | Reference    |
-| ------------------------------- |: ---------------------------------:|:------------ |
+| ------------------------------- | --------------------------------- |:------------ |
 | A variety of control structures are used in the project. | OK (1)        | `Game.cpp:7` |
 | The project reads data from an external file  |: N/A                 | N/A          |
 | The project accepts input from a user | OK, Racket control (2)          | `Controller.cpp:20` |
