@@ -5,19 +5,25 @@ The game itself is an overly simple implementation of a tile tennis.
 The game is probably not possible to win at this stage as the balls path is completely deterministic and does not visit all the regions of the screen in reasonable time.
 
 ## Dependencies
-### SDL2
-SDL2 works out-of-the box with `vcpkg`, and this is the recommended way of installing it for painless cross-platform build. Follow the installation instructions to install it on your system:
-[vcpkg on Github](https://github.com/microsoft/vcpkg)  
-
-As a side note, you may be able to install it with your package manager on Unix-like systems:
-```bash
-brew install vcpkg # MacOS
-```
-Once `vcpkg` is installed it can install SDL2 for you:
-```bash
-vcpkg install sdl2
-```
-This project was developed and tesed on MacOS 10.15.6 (Catalina)  
+## Dependencies for Running Locally
+### cmake >= 3.7
+  * All OSes: [click here for installation instructions](https://cmake.org/install/)
+### make >= 4.1 (Linux, Mac), 3.81 (Windows)
+  * Linux: make is installed by default on most Linux distros
+  * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
+  * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
+### SDL2 >= 2.0
+  * SDL2 installation can be challenging, but works out-of-the box with `vcpkg`, hence this is the recommended way of installing SDL for painless cross-platform build. Follow the installation instructions to install it on your system: [vcpkg on Github](https://github.com/microsoft/vcpkg). Then install SDL2 like this:
+  ```bash
+  vcpkg install sdl2
+  ```
+### Alternative installation of SDL2 >=2.0
+  * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
+  * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
+### gcc/g++ >= 5.4
+  * Linux: gcc / g++ is installed by default on most Linux distros
+  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
+  * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 ## Build
 1. Clone or download this repo.
