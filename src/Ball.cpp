@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Ball.h"
 
-Ball::Ball(int id){
+Ball::Ball(int id, bool *running) : _running(running){
   this->id = id;
   location = Vector2d(100, 200);
   speed = Vector2d(3,3);
@@ -33,6 +33,7 @@ void Ball::Update(){
   location += speed;
   if (this->location.X <= 2 or location.X >= 598) speed.X *= -1;
   if (this->location.Y <= 2) speed.Y *= -1;
+  if (this->location.Y >= 800) *_running = false;
   _rect->x = location.X;
   _rect->y = location.Y;
 }

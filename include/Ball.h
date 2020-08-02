@@ -8,7 +8,7 @@
 
 class Ball : public GameObject, public BoundingBox{
 public:
-  Ball(int id);
+  Ball(int id, bool *running);
   ~Ball() override;
   void Update() override;
   void Draw(Renderer &renderer) override;
@@ -18,6 +18,7 @@ public:
   void MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox);
 private:
   Renderer *_renderer;
+  bool *_running;
   std::shared_ptr<SDL_Rect> _rect;
   std::vector<std::shared_ptr<BoundingBox>> _collisionWatchList;
     /* 

@@ -9,7 +9,7 @@ Game::Game(Renderer &renderer) : _renderer(renderer){
   RegisterGameObject(racket);
   controller.SetContext(&running, std::static_pointer_cast<GameObject> (racket));
 
-  ball = std::make_shared<Ball>(Ball(2));
+  ball = std::make_shared<Ball>(Ball(2, &running));
   RegisterGameObject(ball);
   ball->AddToCollisionWatchList(racket);
   
@@ -52,6 +52,7 @@ void Game::Run(std::size_t target_frame_duration) {
       SDL_Delay(target_frame_duration - frame_duration);
     }
   }
+  std::cout << "----***Game over***----\n";
 }
 
 void Game::Draw() {
