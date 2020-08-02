@@ -3,7 +3,6 @@
 #include "Ball.h"
 
 Ball::Ball(int id, bool *running) : _running(running){
-  this->id = id;
   location = Vector2d(100, 200);
   speed = Vector2d(3,3);
   SDL_Rect r {location.X, location.Y, 10, 10};

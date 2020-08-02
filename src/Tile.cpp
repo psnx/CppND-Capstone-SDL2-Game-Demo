@@ -4,7 +4,6 @@
 #include "Tile.h"
 
 Tile::Tile(int id, SDL_Rect r) : _rect(std::make_shared<SDL_Rect>(r)) {
-  id = id;
   bbox = _rect;
 }
 

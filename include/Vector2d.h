@@ -64,7 +64,7 @@ class Vector2d {
     /*
     Scales a vector by the given factor. Returns a 2D vector
     */
-    Vector2d<T> Scale(T factor){
+    Vector2d<T> Scale(const T &factor){
       this->X *= factor;
       this->Y *= factor;
       return *this;

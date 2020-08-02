@@ -5,7 +5,6 @@ The game itself is an overly simple implementation of a tile tennis.
 The game is probably not possible to win at this stage as the balls path is completely deterministic and does not visit all the regions of the screen in reasonable time.
 <img src="screenshot.png"/>
 
-
 ## Dependencies
 ## Dependencies for Running Locally
 ### cmake >= 3.7
@@ -54,4 +53,37 @@ The codebase is inspired by [Udacity's CppND Snake Game](https://github.com/udac
 ## Useful links
 - [SDL](https://www.libsdl.org)
 - [Lazy Foo's Productions](https://lazyfoo.net/tutorials/SDL/index.php)
+
+## Self assesment for Project Review
+
+**NOTE: ** The header files and `cpp` files are stored separately in the `./include` and `./src` folder
+respectively.
+
+Adressed rubric points
+
+| Requirement                     | Self Assesment                     |: Reference   |  
+| ------------------------------- |: ---------------------------------:|:------------ |  
+| A variety of control structures are used in the project. | OK (1)        | `Game.cpp:7` |  
+| The project reads data from an external file  |: N/A                 | N/A          |  
+| The project accepts input from a user | OK, Racket control (2)          | `Controller.cpp:20` |  
+| The project code is organized into classes | OK (3)                     | `GameObject.h:13`    |  
+| All class data members are explicitly specified  | OK (4)               | `GameObject.h:13`  |  
+| Member initialization lists used where possible   | OK (5)          | `Ball.h:5`     |  
+| All class member functions document their effects  | OK (6)         | `Vector2d.h:4  |  
+| Appropriate data and functions are grouped into classes | OK (7)    | `Racket.h:17-20` |  
+| One function is overloaded                        | OK(8)           | `Vector2d.h:11-12 |  
+| One function is declared with a template          | OK(9)           | `Vector2d.h:18    |  
+| Two functions use pass-by-reference               | OK(10)          | `Vector2d.h:18-67`  |  
+| one class that uses unmanaged dynamically allocated memory | N/A    | N/A               |  
+| RAII Pattern used                                 | OK(11)          | `Game.h:41`     |  
+| Rule of 5                                         | N/A             | N/A           |  
+| For classes with move constructors...             | N/A             | N/A           |  
+| The project uses at least one smart pointer       | OK(12)          | `BoundingBox.h:14`  |  
+
+The project does not employ concurrency.
+
+
+
+
+
 

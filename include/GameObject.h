@@ -13,7 +13,7 @@ by the game engine according to the set frame rate requirement.
 class GameObject {
 public:
   GameObject() {};
-  GameObject(int id) {};
+  GameObject(int id) : id(id) {};
   virtual ~GameObject() {};
   virtual void Update() = 0;                    // Called once in every cycle
   virtual void Draw(Renderer &renderer) = 0;    // Called once in every cycle - implement rendering here
