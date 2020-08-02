@@ -70,10 +70,10 @@ Adressed rubric points
 | The project code is organized into classes | OK (3)                     | `GameObject.h:13`    |
 | All class data members are explicitly specified  | OK (4)               | `GameObject.h:13`  |
 | Member initialization lists used where possible   | OK (5)          | `Ball.h:5`     |
-| All class member functions document their effects  | OK (6)         | `Vector2d.h:4  |
+| All class member functions document their effects  | OK (6)         | `Vector2d.h:4`  |
 | Appropriate data and functions are grouped into classes | OK (7)    | `Racket.h:17-20` |
-| One function is overloaded                        | OK(8)           | `Vector2d.h:11-12 |
-| One function is declared with a template          | OK(9)           | `Vector2d.h:18    |
+| One function is overloaded                        | OK(8)           | `Vector2d.h:11-12`|
+| One function is declared with a template          | OK(9)           | `Vector2d.h:18`   |
 | Two functions use pass-by-reference               | OK(10)          | `Vector2d.h:18-67`  |
 | one class that uses unmanaged dynamically allocated memory | N/A    | N/A               |
 | RAII Pattern used                                 | OK(11)          | `Game.h:41`     |
