@@ -13,7 +13,7 @@ The game is probably not possible to win at this stage as the balls path is comp
   * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 ### SDL2 >= 2.0
-  * SDL2 installation can be challenging, but works out-of-the box with `vcpkg`, hence this is the recommended way of installing SDL for painless cross-platform build. Follow the installation instructions to install it on your system: [vcpkg on Github](https://github.com/microsoft/vcpkg). Then install SDL2 like this:
+  * SDL2 installation can be challenging, but works out-of-the box with `vcpkg`, hence this is the recommended way of installing SDL for painless cross-platform use. Follow the installation instructions to install it on your system: [vcpkg on Github](https://github.com/microsoft/vcpkg). Then install SDL2 like this:
   ```bash
   vcpkg install sdl2
   ```
