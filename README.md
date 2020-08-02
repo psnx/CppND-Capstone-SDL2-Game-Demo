@@ -59,7 +59,7 @@ The codebase is inspired by [Udacity's CppND Snake Game](https://github.com/udac
 **NOTE: ** The header files and `cpp` files are stored separately in the `./include` and `./src` folder
 respectively.
 
-Adressed rubric points  
+Addressed rubric points  
 
 
 | Requirement                     | Self Assesment                     | Reference    |
