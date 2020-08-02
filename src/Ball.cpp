@@ -20,8 +20,7 @@ void Ball::MoveToCollisionWatchList(std::shared_ptr<BoundingBox> &&boundingBox){
 }
 
 void Ball::CalculateBounceBackSpeedVector(Vector2d<int> &collisionNormal, Vector2d<int> &speed){
-    //R = L-2(N*L)N
-    speed -= collisionNormal.Scale(2*(collisionNormal * speed));
+  speed -= collisionNormal.Scale(2*(collisionNormal * speed));
 }
 
 void Ball::Update(){

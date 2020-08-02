@@ -4,6 +4,10 @@
 #include "BoundingBox.h"
 #include "GameObject.h"
 
+/*
+Repersents one tile that dies at collison.
+*/
+
 class Tile : public BoundingBox, public GameObject {
   public:
     Tile(int id, SDL_Rect r);
