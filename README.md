@@ -4,7 +4,7 @@ The goal is to demonstrate how one can make a simple game engine.
 The game itself is an overly simple implementation of a tile tennis. 
 The game is probably not possible to win at this stage as the balls path is completely deterministic and does not visit all the regions of the screen in reasonable time.
 
-![Screenshot](screenshot.png "Screenshot from the game")
+![Screenshot](screenshot.png | width=100)
 
 ## Dependencies
 ## Dependencies for Running Locally
