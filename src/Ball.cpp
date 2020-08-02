@@ -1,7 +1,6 @@
 #include <SDL.h>
-#include "Ball.h"
 #include <iostream>
-#include "Vector2d.h"
+#include "Ball.h"
 
 Ball::Ball(int id){
   this->id = id;
