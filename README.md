@@ -14,12 +14,13 @@ The game is probably not possible to win at this stage as the balls path is comp
   * Linux: make is installed by default on most Linux distros
   * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
-### SDL2 >= 2.0
+### SDL2 >= 2.0 (RECOMMENDED)
   * SDL2 installation can be challenging, but works out-of-the box with `vcpkg`, hence this is the recommended way of installing SDL for painless cross-platform use. Follow the installation instructions to install it on your system: [vcpkg on Github](https://github.com/microsoft/vcpkg). Then install SDL2 like this:
   ```bash
   vcpkg install sdl2
   ```
-### Alternative installation of SDL2 >=2.0
+### Alternative installation of SDL2 >=2.0 (NOT RECOMMENDED)
+  * **You may need to modify the `CMakeLists.txt`** file to make this work.
   * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
   * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
 ### gcc/g++ >= 5.4
