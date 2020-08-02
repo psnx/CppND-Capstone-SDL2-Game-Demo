@@ -3,8 +3,8 @@ This is a simple demonstration of a basic game utilizing the SDL Framework.
 The goal is to demonstrate how one can make a simple game engine.
 The game itself is an overly simple implementation of a tile tennis. 
 The game is probably not possible to win at this stage as the balls path is completely deterministic and does not visit all the regions of the screen in reasonable time.
+<img src="screenshot.png"/>
 
-![Screenshot](screenshot.png){:height="36px" width="36px"}
 
 ## Dependencies
 ## Dependencies for Running Locally
