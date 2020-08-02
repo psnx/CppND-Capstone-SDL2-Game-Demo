@@ -4,6 +4,8 @@ The goal is to demonstrate how one can make a simple game engine.
 The game itself is an overly simple implementation of a tile tennis. 
 The game is probably not possible to win at this stage as the balls path is completely deterministic and does not visit all the regions of the screen in reasonable time.
 
+![Screenshot](screenshot.png "Screenshot from the game")
+
 ## Dependencies
 ## Dependencies for Running Locally
 ### cmake >= 3.7
@@ -29,9 +31,9 @@ The game is probably not possible to win at this stage as the balls path is comp
 1. Clone or download this repo.
 2. Make a folder int the project root and build it from there
 ```bash
-mkdir build && cd build # build folder
-cmake .. && make        # build
-./Capostone             # run it
+$ mkdir build && cd build
+$ cmake .. && make
+$ ./Capostone
 ```
 ## Features overview
 This is a demonstration of how you can make a simple game engine using only SDL.  The engine itself is rather
@@ -40,7 +42,7 @@ simple nevertheless it implements the following features:
 - A timed game loop that ensures the calling of the `GameObject`'s `Update()` and `Draw()` methods.
 - An easy way to register a  `gameObject`, which is being updated and drawn then by the _enginge_
 - A simple collision detection mechanism
-- Input reader to process the users input.
+- Input reader to process the user's input.
 
 Please study the comments provided in the header files in the `include folder` for further reference.
 
